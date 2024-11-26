@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-IN">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ExcelDataSource Name="Excel Data Source 1" FileName="C:\Users\Omkar Chobhe\Downloads\LPDA of Sample_Tower_Data_in_ERP_v2_-_Advait(1).xlsx" ComponentName="dashboardExcelDataSource1">
+      <Options Type="DevExpress.DataAccess.Excel.ExcelSourceOptions" SkipEmptyRows="true" UseFirstRowAsHeader="true" SkipHiddenColumns="true" SkipHiddenRows="true">
+        <ImportSettings Type="DevExpress.DataAccess.Excel.ExcelWorksheetSettings" WorksheetName="Advait Data" />
+      </Options>
+      <Schema>
+        <FieldInfo Name="Equipment" OriginalName="Equipment" Type="System.String" Selected="true" />
+        <FieldInfo Name="Description" OriginalName="Description" Type="System.String" Selected="true" />
+        <FieldInfo Name="Functional Loc." OriginalName="Functional Loc." Type="System.String" Selected="true" />
+        <FieldInfo Name="Latitude" OriginalName="Latitude" Type="System.Double" Selected="true" />
+        <FieldInfo Name="Longitude" OriginalName="Longitude" Type="System.Double" Selected="true" />
+        <FieldInfo Name="Line Defect Present" OriginalName="Line Defect Present" Type="System.String" Selected="true" />
+        <FieldInfo Name="Earthing Wire Defect Present" OriginalName="Earthing Wire Defect Present" Type="System.String" Selected="true" />
+        <FieldInfo Name="earthing resistance Defect Present" OriginalName="earthing resistance Defect Present" Type="System.String" Selected="true" />
+        <FieldInfo Name="Vegetation Trimming Required" OriginalName="Vegetation Trimming Required" Type="System.String" Selected="true" />
+        <FieldInfo Name="Encroachments " OriginalName="Encroachments " Type="System.String" Selected="true" />
+      </Schema>
+      <ResultSchema>
+        <View>
+          <Field Name="Equipment" Type="String" />
+          <Field Name="Description" Type="String" />
+          <Field Name="Functional Loc." Type="String" />
+          <Field Name="Latitude" Type="Double" />
+          <Field Name="Longitude" Type="Double" />
+          <Field Name="Line Defect Present" Type="String" />
+          <Field Name="Earthing Wire Defect Present" Type="String" />
+          <Field Name="earthing resistance Defect Present" Type="String" />
+          <Field Name="Vegetation Trimming Required" Type="String" />
+          <Field Name="Encroachments " Type="String" />
+        </View>
+      </ResultSchema>
+    </ExcelDataSource>
+  </DataSources>
+  <Items>
+    <GeoPointMap ComponentName="geoPointMapDashboardItem1" Name="Map 1" DataSource="dashboardExcelDataSource1">
+      <DataItems>
+        <Dimension DataMember="Latitude" DefaultId="DataItem0" />
+        <Dimension DataMember="Longitude" DefaultId="DataItem1" />
+        <Measure DataMember="Line Defect Present" SummaryType="Count" DefaultId="DataItem2" />
+      </DataItems>
+      <ViewArea TopLatitude="24.137279113599075" BottomLatitude="-12.199852122708206" LeftLongitude="-30.13578396206508" RightLongitude="69.971637912934909" CenterPointLatitude="6.2831386283952764" CenterPointLongitude="19.917926975434916" CreateViewerPaddings="false" />
+      <MapLegend />
+      <WeightedLegend />
+      <Latitude DefaultId="DataItem0" />
+      <Longitude DefaultId="DataItem1" />
+      <Value DefaultId="DataItem2" />
+    </GeoPointMap>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="dashboardExcelDataSource1">
+      <InteractivityOptions IsDrillDownEnabled="true" TargetDimensions="Series" />
+      <DataItems>
+        <Dimension DataMember="Line Defect Present" SortOrder="Descending" DefaultId="DataItem1" />
+        <Measure DataMember="Description" SummaryType="Count" DefaultId="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem0" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem2" Name="Chart 2" DataSource="dashboardExcelDataSource1">
+      <DataItems>
+        <Measure DataMember="Line Defect Present" SummaryType="Count" DefaultId="DataItem0" />
+        <Dimension DataMember="earthing resistance Defect Present" DefaultId="DataItem1" />
+        <Dimension DataMember="Earthing Wire Defect Present" DefaultId="DataItem2" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple ShowPointMarkers="true" SeriesType="StackedLine">
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem3" Name="Chart 3" DataSource="dashboardExcelDataSource1">
+      <DataItems>
+        <Measure DataMember="Line Defect Present" SummaryType="Count" DefaultId="DataItem0" />
+        <Dimension DataMember="earthing resistance Defect Present" DefaultId="DataItem1" />
+        <Dimension DataMember="Earthing Wire Defect Present" DefaultId="DataItem2" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Tree View 1" DataSource="dashboardExcelDataSource1" VisibleDataFilterString="Not [DataItem0] In (?)" EnableSearch="true" AutoExpand="true">
+      <DataItems>
+        <Dimension DataMember="Line Defect Present" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </TreeView>
+    <Grid ComponentName="gridDashboardItem1" Name="Grid 1" DataSource="dashboardExcelDataSource1">
+      <DataItems>
+        <Dimension DataMember="Description" DefaultId="DataItem0" />
+      </DataItems>
+      <FormatRules>
+        <GridItemFormatRule Name="FormatRule 1" ApplyToRow="true" DataItemApplyTo="DataItem0">
+          <FormatConditionExpression>
+            <AppearanceSettings AppearanceType="Red" />
+          </FormatConditionExpression>
+        </GridItemFormatRule>
+      </FormatRules>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+      <ColumnFilterOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical" Weight="100">
+      <LayoutGroup Weight="41.131105398457585">
+        <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="20.770288858321869" />
+        <LayoutItem DashboardItem="chartDashboardItem2" Weight="20.701513067400274" />
+        <LayoutItem DashboardItem="chartDashboardItem3" Weight="25.859697386519944" />
+        <LayoutItem DashboardItem="pieDashboardItem1" Weight="32.668500687757913" />
+      </LayoutGroup>
+      <LayoutGroup Weight="58.868894601542415">
+        <LayoutItem DashboardItem="geoPointMapDashboardItem1" Weight="78.473177441540571" />
+        <LayoutItem DashboardItem="gridDashboardItem1" Weight="21.526822558459422" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
